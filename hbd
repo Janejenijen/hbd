@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        #birthdayImage {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 10px;
+            transition: opacity 0.5s;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #ff4081;
+        }
+        .message {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+            display: none;
+        }
+        /* Animasi Bunga dan Hati */
+        .flower, .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            animation: float 3s infinite ease-in-out;
+        }
+        .heart {
+            background: url('https://img.icons8.com/emoji/48/000000/red-heart.png') no-repeat center center;
+            background-size: contain;
+            animation-delay: 1s;
+        }
+        .flower {
+            background: url('https://img.icons8.com/emoji/48/000000/cherry-blossom.png') no-repeat center center;
+            background-size: contain;
+            animation-delay: 0.5s;
+        }
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-20px); opacity: 0.7; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Ulang Tahun!</h1>
+        <img src="mams.jpg" alt="Foto Ulang Tahun" id="birthdayImage">
+        <button class="btn" onclick="toggleMessage()" id="toggleButton">Buka Pesan</button>
+        <p class="message" id="message">Tuhan memberkati selalu, panjang umurmu, sehat badanmu sampai kelak anakmu sukses. maapkan masih kurang kelakuan baik kami padamu mom! 🎉</p>
+        <!-- Elemen Animasi -->
+        <div class="flower" style="top: 10%; left: 20%;"></div>
+        <div class="heart" style="top: 40%; right: 20%;"></div>
+        <div class="flower" style="top: 70%; left: 10%;"></div>
+        <div class="heart" style="top: 60%; right: 10%;"></div>
+    </div>
+
+    <script>
+        let isMessageShown = false;
+
+        function toggleMessage() {
+            const image = document.getElementById("birthdayImage");
+            const message = document.getElementById("message");
+            const button = document.getElementById("toggleButton");
+            const animations = document.querySelectorAll('.flower, .heart');
+
+            if (!isMessageShown) {
+                // Ubah ke tampilan pesan
+                image.src = "momm.jpg";  // Ganti URL kedua di sini
+                message.style.display = "block";
+                button.textContent = "Tutup Pesan";
+                animations.forEach((element) => element.style.opacity = "1");
+            } else {
+                // Kembali ke tampilan awal
+                image.src = "mommy.jpg";  // Kembali ke URL gambar pertama
+                message.style.display = "none";
+                button.textContent = "Buka Pesan";
+                animations.forEach((element) => element.style.opacity = "0");
+            }
+            isMessageShown = !isMessageShown;  // Toggle state
+        }
+    </script>
+</body>
+</html>
